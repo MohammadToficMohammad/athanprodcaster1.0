@@ -1,0 +1,21 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>athanprodcaster.root</groupId>
+  <artifactId>athanprodcaster.root</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>athanprodcaster.root</name>
+  <description>athanprodcaster.root</description>
+  
+   <modules>
+  	<module>AuthorizationService</module>
+  	<module>AuthorizationServiceRpcClient</module>
+  	<module>ProjectService</module>
+  	<module>MqClientAbstracts</module>
+  	<module>MqServerAbstracts</module>
+  	<module>ConfigServer</module>
+  	<module>ServiceRegistery</module>
+  	<module>LogglyEvents</module>
+    
+  </modules>
+</project>

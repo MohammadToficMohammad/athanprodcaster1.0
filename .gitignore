@@ -1,0 +1,3 @@
+Zipkin/**
+*/target/**
+/build/java/openapi-generator-cli.jar

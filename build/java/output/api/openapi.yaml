@@ -1,0 +1,95 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- description: Generated server url
+  url: http://localhost:8080
+paths:
+  /tests/{userId}/{restrictId}:
+    get:
+      operationId: getUserRoles
+      parameters:
+      - explode: false
+        in: path
+        name: userId
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: restrictId
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "404":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Role'
+                type: array
+          description: Contact not found
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Role'
+                type: array
+          description: successful operation
+      summary: Deletes a contact
+      tags:
+      - contact
+      x-accepts: '*/*'
+  /tests/test/{userId}/{restrictId}:
+    get:
+      operationId: getUserRolesTest
+      parameters:
+      - explode: false
+        in: path
+        name: userId
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: restrictId
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Role'
+                type: array
+          description: OK
+      tags:
+      - test-controller
+      x-accepts: '*/*'
+components:
+  schemas:
+    Role:
+      example:
+        roleId: 0
+        name: name
+      properties:
+        roleId:
+          format: int64
+          type: integer
+        name:
+          type: string
+      type: object
+

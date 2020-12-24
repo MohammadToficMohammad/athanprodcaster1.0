@@ -1,0 +1,10 @@
+{
+    "modelPackage": "com.athanprodcasterAuthorizationServiceApiClient.Models",
+    "apiPackage": "com.athanprodcasterAuthorizationServiceApiClient.apiPackage",
+    "artifactId": "AuthorizationServiceApiClient",
+    "groupId":"com.athanprodcasterAuthorizationServiceApiClient",
+    "dateLibrary":"java8",
+    "java8":"true",
+    "library":"feign"
+
+}

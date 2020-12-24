@@ -1,0 +1,63 @@
+
+for apiclient swagger openapi
+to create client just add maven project change the compiler version to 11
+add it as module to root
+make config json for client and add new gen.bat for it following previuos one and add the needed packages as this one
+use this client by adding it as dependemcy
+
+add bean to initilizer to create a static apiclient because name is fixed
+
+
+----------------------------------------------------------------------------------------
+for mq events (not rpc)
+
+
+for server just add dependency to mqserverabstracts and add scancomponent
+add this inistilizer with servicename
+@Component
+public class MqEventInitializer {
+	
+	@Bean 
+	public MqServiceNameServerBean getMqServiceNameServerBean() 
+	{
+		return new  MqServiceNameServerBean("AuthorizationService");
+	}
+
+}
+
+to send event just autowrire 
+@Autowired
+	MqEventSender mqSender;
+	
+	and send
+	
+	
+	
+for client just add dependecy to mqclientabstracts and add scancomponent
+then add the handler with the beans
+@Component
+public class MqClientHandler  extends MqClientAbstract
+{
+    @Order(0)
+	@Bean 
+	public MqServiceNameClientBean getMqServiceNameClientBean() 
+	{
+	return new	MqServiceNameClientBean("ProjectService");
+	}
+	
+    @Order(1)
+	@Bean 
+	public MqClientEventsToSubscribe getMqClientEventsToSubscribe() 
+	{
+	return new	MqClientEventsToSubscribe(Arrays.asList("AuthorizationService"));
+	}
+	
+	@Override
+    public  Object handleEvent(EventClientDto event) {
+		System.out.println(event.eventName);
+		return event;
+		
+	}
+	
+}
+	

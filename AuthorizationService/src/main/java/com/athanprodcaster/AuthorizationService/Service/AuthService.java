@@ -15,14 +15,14 @@ import com.athanprodcaster.AuthorizationService.Repository.UserRepository;
 @Service
 public class AuthService implements IAuthService {
 
-	@Autowired
+
 	private RoleRepository _RoleRepository;
-	@Autowired
+
 	private UserRepository _UserRepository;
-	@Autowired
+
 	private RoleRestrictionRepository _RoleRestrictionRepo;
 	
-	/*
+
 	@Autowired
 	public AuthService(RoleRepository roleRepository,
 			UserRepository userRepository,
@@ -33,7 +33,7 @@ public class AuthService implements IAuthService {
 		_RoleRestrictionRepo=roleRestrictionRepo;
 		
 	}
-	*/
+	
 	@Override
 	public User getUserById(long userId)
 	{

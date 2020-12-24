@@ -25,23 +25,23 @@ import brave.propagation.TraceIdContext;
 @AutoJsonRpcServiceImpl
 public class AuthRpcService implements IAuthServiceClient{
 	
-	@Autowired
+
 	private AuthService _AuthService;
-	
-	@Autowired
+
 	private LogglyEventsLogger _Logger;
+
+	Tracer tracer;
 	
-	/*
 	@Autowired
-	public AuthRpcService(AuthService authService,LogglyEventsLogger logger) 
+	public AuthRpcService(AuthService authService,LogglyEventsLogger logger,Tracer _tracer) 
 	{
 		_AuthService = authService;
 		_Logger=logger;
+		tracer=_tracer;
 		
 	}
-	*/
-	@Autowired
-	Tracer tracer;
+	
+	
 	
 	@Override
 	public List<RoleVo> getUserRolesOnRestriction(long userId, long roleRestrictionId) {

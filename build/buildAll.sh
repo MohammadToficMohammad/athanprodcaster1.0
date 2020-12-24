@@ -18,9 +18,9 @@ cd MqServerAbstracts
 mvn clean install -DskipTests -Dmaven.test.skip=true 
 cd ..
 cd AuthorizationService
-mvn clean install -DskipTests -Dmaven.test.skip=true 
+mvn clean package spring-boot:repackage -DskipTests -Dmaven.test.skip=true 
 cd ..
 cd ProjectService
-mvn clean install -DskipTests -Dmaven.test.skip=true 
+mvn clean package spring-boot:repackage -DskipTests -Dmaven.test.skip=true
 cd ..
-cd build
+ls

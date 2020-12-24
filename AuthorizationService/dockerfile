@@ -1,4 +1,6 @@
-FROM adoptopenjdk/openjdk11
+#FROM adoptopenjdk/openjdk11
+#FROM openjdk:11
+FROM adoptopenjdk:11-jre-hotspot
 WORKDIR /app
 EXPOSE 1231
 COPY ./target/AuthorizationService-0.0.1-SNAPSHOT.jar ./app.jar

@@ -1,6 +1,4 @@
 ls
-Exit 0
-cd ..
 cd LogglyEvents
 mvn clean install -DskipTests -Dmaven.test.skip=true 
 cd ..

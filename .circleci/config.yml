@@ -26,6 +26,8 @@
      build_and_push:
        jobs:
          - build
-         - PushToDockerHub         
+         - PushToDockerHub:
+             requires:
+               - build         
          
   

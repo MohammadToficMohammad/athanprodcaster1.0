@@ -12,10 +12,7 @@
         #- run: docker image ls
     PushToDockerHub:
       docker:
-        - image: circleci/java:11
-          auth:
-            username: happyml
-            password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+        - image: circleci/buildpack-deps:stretch
       steps:
         - checkout
         - setup_remote_docker

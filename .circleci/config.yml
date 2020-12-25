@@ -13,7 +13,7 @@
         - run: |
             docker build -t happyml/athanprodcaster:latest ./AuthorizationService
             echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-            docekr push happyml/athanprodcaster:latest
+            docker push happyml/athanprodcaster:latest
         #- run: docker image ls
     PushToDockerHub:
       docker:

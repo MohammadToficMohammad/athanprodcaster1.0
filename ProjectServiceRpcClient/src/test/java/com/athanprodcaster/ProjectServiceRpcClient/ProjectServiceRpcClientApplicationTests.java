@@ -1,0 +1,13 @@
+package com.athanprodcaster.ProjectServiceRpcClient;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class ProjectServiceRpcClientApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}

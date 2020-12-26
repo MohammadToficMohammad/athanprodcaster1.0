@@ -3,6 +3,7 @@ package com.athanprodcaster.ProjectService;
 import java.net.MalformedURLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.cloud.sleuth.Tracer;
@@ -22,6 +23,8 @@ public class Initializer implements ApplicationRunner {
 	@Autowired
 	public Tracer tracer;
 	
+	 @Value("${AuthServiceRpcBaseUrl}")
+	 private String _AuthServiceRpcBaseUrl;
 	
 	
 	@Bean 

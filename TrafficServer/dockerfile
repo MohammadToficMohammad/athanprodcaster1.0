@@ -1,0 +1,7 @@
+#FROM adoptopenjdk/openjdk11
+#FROM openjdk:11
+FROM adoptopenjdk:11-jre-hotspot
+WORKDIR /app
+EXPOSE 1234
+COPY ./target/TrafficServer-0.0.1-SNAPSHOT.jar ./app.jar
+CMD java $JAVA_OPTIONS -jar app.jar

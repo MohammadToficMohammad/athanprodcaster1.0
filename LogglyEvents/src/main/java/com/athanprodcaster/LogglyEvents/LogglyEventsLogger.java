@@ -3,6 +3,7 @@ package com.athanprodcaster.LogglyEvents;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.sleuth.Tracer;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.ClientHttpRequest;
@@ -18,6 +19,9 @@ public class LogglyEventsLogger {
 	
 	@Autowired
 	public Tracer tracer;
+	
+	 @Value("${LogglyEventsBaseUrl}")
+	 private String _LogglyEventsBaseUrl;
 
 	public void Log(String event) 
 	{
@@ -38,7 +42,7 @@ public class LogglyEventsLogger {
 
 	    var response = WebClient.create()
 	      .post()
-	      .uri("http://logs-01.loggly.com/inputs/e398be66-72c1-4390-9ca4-53299e14af76/tag/http/")
+	      .uri(_LogglyEventsBaseUrl)
 .contentType(MediaType.APPLICATION_JSON).bodyValue(map).retrieve().bodyToFlux(String.class).blockLast();
 
 	}

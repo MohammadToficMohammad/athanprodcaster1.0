@@ -1,3 +1,5 @@
 Zipkin/**
 */target/**
+*/node/**
+*/node_modules/**
 /build/java/openapi-generator-cli.jar

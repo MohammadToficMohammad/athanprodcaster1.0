@@ -34,11 +34,11 @@ export class Layout extends Component {
 				</Navbar>
 				</Col>
 			</Row>
-			<Row style={{ height: '88%' , marginTop:'10px!important' ,paddingBottom:'10px'}}>
+			<Row style={{ height: '95%' , marginTop:'10px!important' ,paddingBottom:'10px'}}>
 				<Col>
 				
 					<Card style={{    marginTop:'10px!important', height:'100%' , boxShadow: '5px 10px 8px #888888'}}>
-						<Card.Body> {this.props.children}</Card.Body>
+						<Card.Body style={{padding:'10%' ,height: '180px',overflow: 'auto'}}> {this.props.children}</Card.Body>
 					</Card>
 				</Col>
 				

@@ -1,7 +1,7 @@
 import React, { useState,Component } from 'react';
 import { Button, Container, Row, Col, Navbar, Nav, NavDropdown, Form, FormControl,Card  } from 'react-bootstrap';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
+import StaticContext from "../StaticContext";
 
 export class Layout extends Component {
  // static displayName = Layout.name;
@@ -47,7 +47,7 @@ export class Layout extends Component {
 				<Col>
 
 					<Card bg="light" style={{    marginTop:'10px!important', height:'100%' , boxShadow: '5px 10px 8px #888888'}}>
-						<Card.Body>Athan-Prodcaster @2020  <h1>{window.location.origin.toString()}</h1> </Card.Body>
+						<Card.Body>Athan-Prodcaster @2020 </Card.Body>
 					</Card>
 				</Col>
 			</Row>

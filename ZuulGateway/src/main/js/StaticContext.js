@@ -1,7 +1,12 @@
 const StaticContext =
 {
     baseUrlOld: "../partner",
-    baseUrl:"http://localhost:313/",
+    baseUrl:getBaseUrl(),
     LogedIn: false,
+}
+
+function getBaseUrl()
+{
+  return window.location.origin.toString();
 }
 export default StaticContext

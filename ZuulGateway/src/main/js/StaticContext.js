@@ -1,6 +1,7 @@
 const StaticContext =
 {
-    baseUrl: "../partner",
+    baseUrlOld: "../partner",
+    baseUrl:"http://localhost:313/",
     LogedIn: false,
 }
 export default StaticContext

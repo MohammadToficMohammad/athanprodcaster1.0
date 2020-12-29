@@ -45,9 +45,9 @@ export class Layout extends Component {
 			</Row>
 			<Row style={{ height: '100' ,marginTop:'10px!important' }}>
 				<Col>
-				
+
 					<Card bg="light" style={{    marginTop:'10px!important', height:'100%' , boxShadow: '5px 10px 8px #888888'}}>
-						<Card.Body>Athan-Prodcaster @2020  </Card.Body>
+						<Card.Body>Athan-Prodcaster @2020  <h1>{window.location.origin.toString()}</h1> </Card.Body>
 					</Card>
 				</Col>
 			</Row>

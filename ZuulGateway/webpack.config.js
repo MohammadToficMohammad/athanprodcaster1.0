@@ -1,5 +1,7 @@
 const path = require('path');
- 
+
+
+
 module.exports = {
   entry: path.resolve(__dirname, './src/main/js/app.js'),
   module: {
@@ -20,6 +22,6 @@ module.exports = {
   },
   devServer: {
     contentBase: path.resolve(__dirname, './src/main/resources/static/built'),
-  },
+  }
 };
 

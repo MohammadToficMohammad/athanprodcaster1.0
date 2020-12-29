@@ -1,13 +1,13 @@
-package com.athanprodcaster.WebApp;
+package com.athanprodcaster.ZuulGateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WebAppApplication {
+public class ZuulGatewayApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WebAppApplication.class, args);
+		SpringApplication.run(ZuulGatewayApplication.class, args);
 	}
 
 }

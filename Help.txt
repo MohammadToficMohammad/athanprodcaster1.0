@@ -11,7 +11,7 @@ add bean to initilizer to create a static apiclient because name is fixed
 ----------------------------------------------------------------------------------------
 for mq events (not rpc)
 
-a
+
 for server just add dependency to mqserverabstracts and add scancomponent
 add this inistilizer with servicename
 @Component

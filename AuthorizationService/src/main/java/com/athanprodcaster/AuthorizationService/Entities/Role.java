@@ -12,10 +12,13 @@ import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-
+import lombok.Setter;
+//data causes problems because of tostring https://stackoverflow.com/questions/54570757/stack-overflow-on-hibernate-caused-by-one-to-many-relationship
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Role {

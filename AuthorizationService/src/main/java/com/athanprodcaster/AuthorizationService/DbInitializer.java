@@ -100,8 +100,12 @@ public class DbInitializer implements ApplicationRunner {
 			
 			var user1=new User();
 			user1.setName("Mohammad");
+			user1.setEmail("test@gmail.com");
+			user1.setPassword("test");
 			var user2=new User();
 			user2.setName("Zaher");
+			user2.setEmail("test2@gmail.com");
+			user2.setPassword("test");
 			user1=_UserRepository.save(user1);
 			user2=_UserRepository.save(user2);
 			

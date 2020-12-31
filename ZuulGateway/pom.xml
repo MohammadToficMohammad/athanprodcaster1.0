@@ -36,7 +36,16 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-
+  <dependency>
+        <groupId>com.athanprodcaster</groupId>
+        <artifactId>LogglyEvents</artifactId>
+        <version>${project.version}</version>
+</dependency> 
+<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

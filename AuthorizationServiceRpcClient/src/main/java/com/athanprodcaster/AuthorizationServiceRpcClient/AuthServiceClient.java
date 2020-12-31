@@ -10,7 +10,8 @@ import org.springframework.cloud.sleuth.annotation.NewSpan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
-import com.athanprodcaster.AuthorizationServiceRpcClient.VOs.RoleVo;
+import com.athanprodcaster.AuthorizationServiceRpcClient.Dtos.LoginResultDto;
+import com.athanprodcaster.AuthorizationServiceRpcClient.Dtos.RoleDto;
 import com.athanprodcaster.LogglyEvents.LogglyEventsLogger;
 import com.googlecode.jsonrpc4j.JsonRpcHttpClient;
 import com.googlecode.jsonrpc4j.ProxyUtil;
@@ -36,12 +37,23 @@ public class AuthServiceClient implements IAuthServiceClient {
 	}
 
 	@Override
-	public List<RoleVo> getUserRolesOnRestriction(long userId, long roleRestrictionId) {
+	public List<RoleDto> getUserRolesOnRestriction(long userId, long roleRestrictionId) {
 		_Logger.Log("AuthServiceClient rpc getUserRolesOnRestriction userId:" + userId + " roleRestrictionId:"
 				+ roleRestrictionId);
 		var _AuthService = getRpcClient();
 		return _AuthService.getUserRolesOnRestriction(userId, roleRestrictionId);
 	}
+	
+	
+	@Override
+	public LoginResultDto loginUser(String email, String password) {
+		_Logger.Log("AuthServiceClient rpc loginUser email:" + email );
+		System.out.println("MQTT1 AuthServiceClient email"+email);
+		var _AuthService = getRpcClient();
+		return _AuthService.loginUser(email, password);
+	}
+	
+	
 
 	private IAuthServiceClient getRpcClient() {
 
@@ -70,5 +82,8 @@ public class AuthServiceClient implements IAuthServiceClient {
 
 		return authService;
 	}
+
+
+
 
 }

@@ -1,6 +1,7 @@
 package com.athanprodcaster.AuthorizationService.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,8 @@ import com.athanprodcaster.AuthorizationService.Entities.User;
 import com.athanprodcaster.AuthorizationService.Repository.RoleRepository;
 import com.athanprodcaster.AuthorizationService.Repository.RoleRestrictionRepository;
 import com.athanprodcaster.AuthorizationService.Repository.UserRepository;
+import com.athanprodcaster.AuthorizationServiceRpcClient.Dtos.UserRoleDto;
+
 
 @Service
 public class AuthService implements IAuthService {
@@ -35,9 +38,16 @@ public class AuthService implements IAuthService {
 	}
 	
 	@Override
-	public User getUserById(long userId)
+	public Optional<User> getUserById(long userId)
 	{
-		return _UserRepository.findById(userId).get();
+		return _UserRepository.findById(userId);
+	}
+	
+	@Override
+	public Optional<User> getUserByEmail(String email)
+	{
+		
+		return _UserRepository.findByEmail(email);
 	}
 
 	@Override
@@ -49,7 +59,13 @@ public class AuthService implements IAuthService {
 	@Override
 	public List<Role> getUserAllRoles(long userId) 
 	{
-	   return _RoleRepository.getUserAllRoles(userId);
+	   return _RoleRepository.getUserAllRolesAsRoles(userId);
+	}
+	
+	@Override
+	public List<UserRoleDto> getAllUserRoleDtos(long userId) 
+	{
+	   return _RoleRepository.getUserAllRolesAsUserRoleDtos(userId);
 	}
 
 	@Override

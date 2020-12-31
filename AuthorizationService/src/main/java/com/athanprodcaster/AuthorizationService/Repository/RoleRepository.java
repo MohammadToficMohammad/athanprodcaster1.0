@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.athanprodcaster.AuthorizationService.Entities.Role;
+import com.athanprodcaster.AuthorizationServiceRpcClient.Dtos.UserRoleDto;
 
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long>{
@@ -18,5 +19,11 @@ public interface RoleRepository extends JpaRepository<Role, Long>{
 	
 	@Transient
 	@Query("SELECT r FROM Role r INNER JOIN UserRole ur ON r.roleId=ur.role.id AND ur.user.userId = :userId")
-	public List<Role> getUserAllRoles(long userId);
+	public List<Role> getUserAllRolesAsRoles(long userId);
+	
+	@Transient
+	@Query("SELECT new com.athanprodcaster.AuthorizationServiceRpcClient.Dtos.UserRoleDto(r.roleId,r.name,ur.roleRestriction.roleRestrictionId) FROM Role r INNER JOIN UserRole ur ON r.roleId=ur.role.id AND ur.user.userId = :userId")
+	public List<UserRoleDto> getUserAllRolesAsUserRoleDtos(long userId);
+	
+	
 }

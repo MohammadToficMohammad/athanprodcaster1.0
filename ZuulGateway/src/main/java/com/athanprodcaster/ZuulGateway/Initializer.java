@@ -1,4 +1,4 @@
-package com.athanprodcaster.ProjectService;
+package com.athanprodcaster.ZuulGateway;
 
 import java.net.MalformedURLException;
 
@@ -41,12 +41,6 @@ public class Initializer implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		
-		/*
-		System.out.println("here");
-		var list=_AuthServiceClient.getUserRolesOnRestriction(3, 5);
-		System.out.println("here size"+list.size());
-		System.out.println(list.get(0).getName());
-		*/
 	}
 
 }

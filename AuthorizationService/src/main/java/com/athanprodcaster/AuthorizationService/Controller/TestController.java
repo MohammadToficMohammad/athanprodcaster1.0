@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.athanprodcaster.AuthorizationService.Entities.Role;
 import com.athanprodcaster.AuthorizationService.Service.AuthService;
-
+import com.athanprodcaster.AuthorizationServiceRpcClient.Dtos.UserRoleDto;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -32,10 +32,16 @@ public class TestController
 	
 	
 	
-	@GetMapping("/{userId}/{restrictId}") 
+	@GetMapping("role/{userId}/{restrictId}") 
 	public ResponseEntity<List<Role>> getUserRoles(@PathVariable("userId") long userId,@PathVariable("restrictId") long restrictId) 
 	{
 		return ResponseEntity.ok(authService.getUserRolesOnRestriction(userId, restrictId));
+	}
+	
+	@GetMapping("userrole/{userId}") 
+	public ResponseEntity<List<UserRoleDto>> getUserRolesAsDtos(@PathVariable("userId") long userId) 
+	{
+		return ResponseEntity.ok(authService.getAllUserRoleDtos(userId));
 	}
 	
 	

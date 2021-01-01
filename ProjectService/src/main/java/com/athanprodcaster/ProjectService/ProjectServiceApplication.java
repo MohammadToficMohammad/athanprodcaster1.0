@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.sleuth.annotation.NewSpan;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
@@ -18,6 +19,7 @@ import com.athanprodcaster.LogglyEvents.LogglyEventsLogger;
 @EnableDiscoveryClient
 @SpringBootApplication
 @EnableScheduling
+@EnableAsync
 @ComponentScan({"com.athanprodcaster.**"})
 public class ProjectServiceApplication {
 	
@@ -41,6 +43,6 @@ public class ProjectServiceApplication {
 		_Logger.Log("ProjectServiceApplication reportCurrentTime _AuthServiceClient.getUserRolesOnRestriction(3, 5)");
 		var list=_AuthServiceClient.getUserRolesOnRestriction(3, 5);
 		System.out.println("here size"+list.size());
-		System.out.println(list.get(0).getName());
+		//System.out.println(list.get(0).getName());
 	}
 }

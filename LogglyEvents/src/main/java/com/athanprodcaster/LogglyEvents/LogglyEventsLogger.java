@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.sleuth.Tracer;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.ClientHttpRequest;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -15,6 +17,7 @@ import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Component
+@EnableAsync
 public class LogglyEventsLogger {
 	
 	@Autowired
@@ -22,7 +25,10 @@ public class LogglyEventsLogger {
 	
 	 @Value("${LogglyEventsBaseUrl}")
 	 private String _LogglyEventsBaseUrl;
-
+	 
+	 
+	 
+    @Async
 	public void Log(String event) 
 	{
 		HashMap<String,Object> map = new HashMap<String,Object>();

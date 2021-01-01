@@ -15,4 +15,6 @@ public class UserRoleDto {
 	
 	public long roleRestrictionId;
 	
+	public String roleRestrictionName;
+	
 }

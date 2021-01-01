@@ -22,7 +22,7 @@ public interface RoleRepository extends JpaRepository<Role, Long>{
 	public List<Role> getUserAllRolesAsRoles(long userId);
 	
 	@Transient
-	@Query("SELECT new com.athanprodcaster.AuthorizationServiceRpcClient.Dtos.UserRoleDto(r.roleId,r.name,ur.roleRestriction.roleRestrictionId) FROM Role r INNER JOIN UserRole ur ON r.roleId=ur.role.id AND ur.user.userId = :userId")
+	@Query("SELECT new com.athanprodcaster.AuthorizationServiceRpcClient.Dtos.UserRoleDto(r.roleId,r.name,ur.roleRestriction.roleRestrictionId,ur.roleRestriction.name) FROM Role r INNER JOIN UserRole ur ON r.roleId=ur.role.id AND ur.user.userId = :userId")
 	public List<UserRoleDto> getUserAllRolesAsUserRoleDtos(long userId);
 	
 	

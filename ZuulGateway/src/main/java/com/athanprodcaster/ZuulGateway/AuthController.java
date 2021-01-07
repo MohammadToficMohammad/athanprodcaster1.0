@@ -65,11 +65,11 @@ public class AuthController {
 			var now=System.currentTimeMillis();
 			var h3now=now+(1000 * 60 * 60 * 3);
 			var expireStamp=h3now < SecretContainer.expireTimestamp ? h3now : SecretContainer.expireTimestamp;
-			//result.token=Token.createJWT(expireStamp, rpcResult,SecretContainer.secret);
-		    result.token=Token.createRsaJWT(expireStamp, rpcResult,SecretContainer.rsaPrivateKey);
+			result.token=Token.createJWT(expireStamp, rpcResult,SecretContainer.secret);
+		    //result.token=Token.createRsaJWT(expireStamp, rpcResult,SecretContainer.rsaPrivateKey);
 			result.expireTimestamp=expireStamp;
 			//System.out.println(Token.decodeJWT(result.token, SecretContainer.secret).message);
-			System.out.println(Token.decodeRsaJWT(result.token, SecretContainer.rsaPublicKey).message);
+			//System.out.println(Token.decodeRsaJWT(result.token, SecretContainer.rsaPublicKey).message);
 			return new ResponseEntity<>(result, HttpStatus.OK);
 		}
 	

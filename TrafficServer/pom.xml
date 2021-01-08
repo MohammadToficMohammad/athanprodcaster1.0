@@ -30,7 +30,14 @@
 
 	<dependency>
         <groupId>com.athanprodcaster</groupId>
-        <artifactId>AuthorizationServiceRpcClient</artifactId>
+        <artifactId>TrafficControllerRpcClient</artifactId>
+        <version>${project.version}</version>
+</dependency>
+
+
+	<dependency>
+        <groupId>com.athanprodcaster</groupId>
+        <artifactId>TrafficServerRpcClient</artifactId>
         <version>${project.version}</version>
 </dependency>
 	

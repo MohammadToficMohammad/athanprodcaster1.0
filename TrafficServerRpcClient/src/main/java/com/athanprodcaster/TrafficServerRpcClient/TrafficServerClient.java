@@ -1,4 +1,4 @@
-package com.athanprodcaster.TrafficControllerRpcClient;
+package com.athanprodcaster.TrafficServerRpcClient;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -11,7 +11,7 @@ import com.athanprodcaster.LogglyEvents.LogglyEventsLogger;
 import com.googlecode.jsonrpc4j.JsonRpcHttpClient;
 import com.googlecode.jsonrpc4j.ProxyUtil;
 
-public class TrafficControllerClient implements ITrafficControllerClient {
+public class TrafficServerClient implements ITrafficServerClient {
 
 	private LogglyEventsLogger _Logger;
 	private Tracer tracer;
@@ -25,7 +25,7 @@ public class TrafficControllerClient implements ITrafficControllerClient {
 	}
 	
 
-	public TrafficControllerClient(String _baseUrl, LogglyEventsLogger logger, Tracer _tracer) throws MalformedURLException {
+	public TrafficServerClient(String _baseUrl, LogglyEventsLogger logger, Tracer _tracer) throws MalformedURLException {
 		_Logger = logger;
 		tracer = _tracer;
 		baseUrl = _baseUrl;
@@ -35,29 +35,19 @@ public class TrafficControllerClient implements ITrafficControllerClient {
 	
 	
 	
-	@Override
-	public void registerTrafficServer(String port) {
-		_Logger.Log("TrafficControllerClient rpc registerTrafficServer");
-		System.out.println("TrafficControllerClient rpc registerTrafficServer");
-		var service = getRpcClient();
-	    service.registerTrafficServer(port);
-		
-	}
-	
-	
 
-	private ITrafficControllerClient getRpcClient() {
+	private ITrafficServerClient getRpcClient() {
 
 		JsonRpcHttpClient rpcClient = null;
 		try {
-			rpcClient = new JsonRpcHttpClient(new URL(baseUrl + "/rpc/TrafficContollerRpcService"));
+			rpcClient = new JsonRpcHttpClient(new URL(baseUrl + "/rpc/TrafficServerRpcService"));
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		ITrafficControllerClient Service = ProxyUtil.createClientProxy(getClass().getClassLoader(),
-				ITrafficControllerClient.class, rpcClient);
+		ITrafficServerClient Service = ProxyUtil.createClientProxy(getClass().getClassLoader(),
+				ITrafficServerClient.class, rpcClient);
 
 		// set sleuth Headers
 		HashMap<String, String> map = new HashMap<String, String>();
@@ -72,6 +62,16 @@ public class TrafficControllerClient implements ITrafficControllerClient {
 		rpcClient.setHeaders(map);
 
 		return Service;
+	}
+
+
+	@Override
+	public void sendCommandToTs(String cmd) {
+		_Logger.Log("TrafficServerClient rpc sendCommandToTs");
+		System.out.println("TrafficServerClient rpc sendCommandToTs");
+		var service = getRpcClient();
+	    service.sendCommandToTs(cmd);
+		
 	}
 
 

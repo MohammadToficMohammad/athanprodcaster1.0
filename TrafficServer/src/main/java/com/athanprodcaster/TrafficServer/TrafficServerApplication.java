@@ -11,7 +11,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import com.athanprodcaster.LogglyEvents.LogglyEventsLogger;
-import com.athanprodcaster.TrafficControllerRpcClient.ITrafficControllerClient;
+//import com.athanprodcaster.TrafficControllerRpcClient.ITrafficControllerClient;
 
 @EnableAspectJAutoProxy(proxyTargetClass=true)  
 @EnableAsync
@@ -20,8 +20,8 @@ import com.athanprodcaster.TrafficControllerRpcClient.ITrafficControllerClient;
 @SpringBootApplication
 public class TrafficServerApplication {
 	
-	@Autowired 
-	ITrafficControllerClient _TrafficControllerClient;
+	//@Autowired 
+	//ITrafficControllerClient _TrafficControllerClient;
 	
 	@Autowired 
 	LogglyEventsLogger _Logger;
@@ -33,7 +33,7 @@ public class TrafficServerApplication {
 	}
 
 	
-//	@Scheduled(fixedRate = 5000)
+/*	@Scheduled(fixedRate = 5000)
 	//@NewSpan
 	public void RegisterTrafficServer() {
 		System.out.println("RegisterTrafficServer");
@@ -42,4 +42,5 @@ public class TrafficServerApplication {
 		_TrafficControllerClient.registerTrafficServer("testport");;
 
 	}
+	*/
 }

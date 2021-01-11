@@ -41,7 +41,7 @@ public class TrafficControllerApplication {
 		SpringApplication.run(TrafficControllerApplication.class, args);
 	}
 	
-	
+	/*
 	@Scheduled(fixedRate = 5000)
 	//@NewSpan
 	public void SendCommandToTs() throws MalformedURLException {
@@ -52,5 +52,6 @@ public class TrafficControllerApplication {
 		client.sendCommandToTs("command1");
 
 	}
+	*/
 
 }

@@ -8,6 +8,7 @@ import org.springframework.cloud.sleuth.Tracer;
 import org.springframework.context.annotation.Bean;
 
 import com.athanprodcaster.LogglyEvents.LogglyEventsLogger;
+import com.athanprodcaster.TrafficControllerRpcClient.Dtos.TsServer;
 import com.googlecode.jsonrpc4j.JsonRpcHttpClient;
 import com.googlecode.jsonrpc4j.ProxyUtil;
 
@@ -36,11 +37,11 @@ public class TrafficControllerClient implements ITrafficControllerClient {
 	
 	
 	@Override
-	public void registerTrafficServer(String port) {
+	public void registerTrafficServer(TsServer tsServer) {
 		_Logger.Log("TrafficControllerClient rpc registerTrafficServer");
 		System.out.println("TrafficControllerClient rpc registerTrafficServer");
 		var service = getRpcClient();
-	    service.registerTrafficServer(port);
+	    service.registerTrafficServer(tsServer);
 		
 	}
 	

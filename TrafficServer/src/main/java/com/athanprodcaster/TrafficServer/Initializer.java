@@ -12,8 +12,8 @@ import org.springframework.context.annotation.Configuration;
 
 
 import com.athanprodcaster.LogglyEvents.LogglyEventsLogger;
-import com.athanprodcaster.TrafficControllerRpcClient.ITrafficControllerClient;
-import com.athanprodcaster.TrafficControllerRpcClient.TrafficControllerClient;
+//import com.athanprodcaster.TrafficControllerRpcClient.ITrafficControllerClient;
+//import com.athanprodcaster.TrafficControllerRpcClient.TrafficControllerClient;
 
 
 @Configuration
@@ -28,14 +28,14 @@ public class Initializer implements ApplicationRunner {
 	 @Value("${TrafficControllerRpcBaseUrl}")
 	 private String _TrafficControllerRpcBaseUrl;
 	
-	
+	/*
 	@Bean 
 	public ITrafficControllerClient getTrafficControllerClient() throws MalformedURLException 
 	{
 		
 		return new TrafficControllerClient(_TrafficControllerRpcBaseUrl,_logger,tracer);
 	};
-	
+	*/
 	
 	
 	

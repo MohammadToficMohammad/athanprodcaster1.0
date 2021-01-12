@@ -21,11 +21,11 @@ public class UdpHandler extends SimpleChannelInboundHandler<DatagramPacket> {
 	
 	public String TsAddressIp;
 
-	public String TsAddressPort;
+	public int TsAddressPort;
 
 	public UdpHandler(String _TsAddressIp,String _TsAddressPort) {
 		TsAddressIp=_TsAddressIp;
-		TsAddressPort=_TsAddressPort;
+		TsAddressPort=Integer.parseInt(_TsAddressPort);
 	}
 
 	@Override
@@ -33,18 +33,7 @@ public class UdpHandler extends SimpleChannelInboundHandler<DatagramPacket> {
 
 		System.out.println("udp pakcet " + msg.content().toString());
 		
-InetSocketAddress tsaddr = new InetSocketAddress("172.30.0.1", Integer.parseInt("8888"));
-		
-		ByteBuf buf=Unpooled.copiedBuffer("mosque1asdasdadasdasdadasasdad\r\n".getBytes(StandardCharsets.UTF_8));
-		buf.retain();
-		DatagramPacket  pck = new DatagramPacket(buf,tsaddr);
-		//ctx.write(pck);
-			ctx.writeAndFlush(pck).addListener(f-> System.out.println("ok")).awaitUninterruptibly();
-	 //pck = new DatagramPacket(buf,msg.sender());
-//		ctx.channel().writeAndFlush(pck).await();
-	
-		System.out.println(tsaddr.getAddress()+" "+tsaddr.getPort());
-		System.out.println(buf.readableBytes());
+
 		
 
 	}
@@ -62,7 +51,15 @@ InetSocketAddress tsaddr = new InetSocketAddress("172.30.0.1", Integer.parseInt(
         
         _ctx = ctx;
 		
-		
+        InetSocketAddress tsaddr = new InetSocketAddress(TsAddressIp, TsAddressPort);
+        ByteBuf buf=Unpooled.directBuffer();
+        buf.writeBytes(("mr "+StateContainer.mosqueName+"\n").getBytes(StandardCharsets.UTF_8));
+		//ByteBuf buf=Unpooled.copiedBuffer("mosque1".getBytes(StandardCharsets.UTF_8));
+		DatagramPacket  pck = new DatagramPacket(buf,tsaddr);
+	    ctx.writeAndFlush(pck).addListener(f-> System.out.println("ok")).await();
+
+	    releaseDirectBuffer(buf);
+        
 		//buf.writeBytes(StandardCharsets.UTF_8.encode("mosque1"));
 
 
@@ -71,7 +68,7 @@ InetSocketAddress tsaddr = new InetSocketAddress("172.30.0.1", Integer.parseInt(
     }
 
 
-	public static void releaseDirect(ByteBuf buf) 
+	public static void releaseDirectBuffer(ByteBuf buf) 
 	{
 		while(buf.refCnt()>0)
 		buf.release();

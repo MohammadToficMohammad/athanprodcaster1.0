@@ -35,6 +35,8 @@ import io.netty.handler.timeout.IdleStateHandler;
 @Configuration
 public class InitStarter {
 	
+	
+	
 	@Value("${TsAddressIp}")
 	public String TsAddressIp;
 	
@@ -62,12 +64,25 @@ public class InitStarter {
 	         });
 
 	         // Bind and start to accept incoming connections.
-	         Integer pPort = Integer.parseInt(TsAddressPort);
+	         Integer pPort = 9000 + (int)(Math.random() * 9999);;
 	         InetAddress address  = InetAddress.getLocalHost();
+	       
+	         while(true) 
+	         {
+	        	 try
+	        	 {
+	        		 b.bind(address,pPort).sync().channel().closeFuture().await();	 
+	        		 break;
+	        	 }catch(Exception e) 
+	        	 {
+	        		 e.printStackTrace();
+	        		 pPort = 9000 + (int)(Math.random() * 9999);
+	        	 }
+	        	
+	         }
 	         System.out.printf("started at %s %s",String.format(pPort.toString()),String.format( address.toString()));
-	         b.bind(address,pPort).sync().channel().closeFuture().await();
-
-	     } catch (UnknownHostException | InterruptedException e) {
+	         
+	     } catch (UnknownHostException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} finally {

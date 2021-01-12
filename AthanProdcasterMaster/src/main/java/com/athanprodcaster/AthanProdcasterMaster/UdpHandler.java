@@ -33,14 +33,16 @@ public class UdpHandler extends SimpleChannelInboundHandler<DatagramPacket> {
 
 		System.out.println("udp pakcet " + msg.content().toString());
 		
-InetSocketAddress tsaddr = new InetSocketAddress("127.0.0.1", Integer.parseInt("8888"));
+InetSocketAddress tsaddr = new InetSocketAddress("172.30.0.1", Integer.parseInt("8888"));
 		
-		ByteBuf buf=Unpooled.copiedBuffer("mosque1".getBytes(StandardCharsets.UTF_8));
+		ByteBuf buf=Unpooled.copiedBuffer("mosque1asdasdadasdasdadasasdad\r\n".getBytes(StandardCharsets.UTF_8));
 		buf.retain();
-		DatagramPacket pck = new DatagramPacket(buf,msg.sender());
-		ctx.channel().writeAndFlush(pck);
-	 pck = new DatagramPacket(buf,tsaddr);
-		ctx.channel().writeAndFlush(pck);
+		DatagramPacket  pck = new DatagramPacket(buf,tsaddr);
+		//ctx.write(pck);
+			ctx.writeAndFlush(pck).addListener(f-> System.out.println("ok")).awaitUninterruptibly();
+	 //pck = new DatagramPacket(buf,msg.sender());
+//		ctx.channel().writeAndFlush(pck).await();
+	
 		System.out.println(tsaddr.getAddress()+" "+tsaddr.getPort());
 		System.out.println(buf.readableBytes());
 		

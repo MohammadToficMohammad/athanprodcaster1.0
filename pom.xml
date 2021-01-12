@@ -16,6 +16,8 @@
   	<module>ConfigServer</module>
   	<module>ServiceRegistery</module>
   	<module>LogglyEvents</module>
+  	<module>TrafficServer</module>
+  	<module>TrafficServerRpcClient</module>
     
   </modules>
 </project>

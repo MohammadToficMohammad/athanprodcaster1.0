@@ -4,6 +4,8 @@ import { Button, Container, Row, Col, Navbar, Nav, NavDropdown, Form, FormContro
 import { BrowserRouter as Router, Switch, Route, Link ,Redirect } from "react-router-dom";
 import { Layout } from "./Components/Layout";
 import { Protected } from "./Components/Protected";
+//import { ClientOne } from "./Components/ClientOne";
+//import { ClientTwo } from "./Components/ClientTwo";
 import { Login } from "./Components/Login";
 import StaticContext from "./StaticContext";
 
@@ -23,8 +25,7 @@ export default function App() {
 				<Switch>
 					<Route exact path='/' component={Login} />
 					 <PrivateRoute isLoggedIn={ StaticContext.LogedIn } path="/protected" component={Protected} />
-                   
-					<Route path="/login" component={Login} />
+                		<Route path="/login" component={Login} />
 				</Switch>
 			</Layout>
 		</Router>

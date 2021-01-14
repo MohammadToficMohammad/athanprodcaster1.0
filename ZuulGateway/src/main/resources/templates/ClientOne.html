@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>ClientOne AthanProdcaster WebApp</title>
+<link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+  integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+  crossorigin="anonymous"
+/>
+</head>
+<style>
+  html, body, #react
+{
+    height: 100vh;
+}
+  </style>
+<body>
+
+<h1> Client One !</h1>
+<button onclick="connect();">Connect</button>
+<button onclick="disconnect();">disConnect</button>
+<button onclick="streamAudio();">start</button>
+<button onclick="stopAudio();">stop</button>
+<script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+<script>
+var peer = new Peer("athanprodcaster_clientone");
+var conn=null;
+
+function connect()
+{
+	 conn = peer.connect('athanprodcaster_clienttwo');
+	// on open will be launch when you successfully connect to PeerServer
+	conn.on('open', function(){
+	  // here you have conn.id
+	  conn.send('hi!');
+	});
+}
+
+function disconnect()
+{
+	conn.close();
+	peer.disconnect();
+	peer.destroy();
+	 stopAudio();
+}
+var streamr=null;
+function streamAudio()
+{
+	var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+	var md=getUserMedia({video: false, audio: true}, function(stream) {
+		streamr=stream;
+	  var call = peer.call('athanprodcaster_clienttwo', stream);
+	  call.on('stream', function(remoteStream) {
+	    // Show stream in some video/canvas element.
+	  });
+	}, function(err) {
+	  console.log('Failed to get local stream' ,err);
+	});
+	
+	
+}
+
+
+function stopAudio()
+{
+	
+
+	streamr.getTracks().forEach(function(track) {
+		  track.stop();
+		});
+
+	
+}
+
+
+
+
+</script>
+
+</body>
+  
+</html>

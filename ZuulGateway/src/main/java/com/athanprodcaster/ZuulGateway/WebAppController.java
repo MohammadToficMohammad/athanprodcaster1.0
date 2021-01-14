@@ -10,5 +10,16 @@ public class WebAppController {
 	public String index() {
 		return "index"; 
 	}
+	
+	@RequestMapping(value = "/c1") 
+	public String c1() {
+		return "ClientOne"; 
+	}
+	
+	@RequestMapping(value = "/c2") 
+	public String c2() {
+		return "ClientTwo"; 
+	}
+
 
 }

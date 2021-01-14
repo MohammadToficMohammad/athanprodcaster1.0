@@ -18,6 +18,7 @@
   	<module>LogglyEvents</module>
   	<module>TrafficServer</module>
   	<module>TrafficServerRpcClient</module>
+  	<module>ZuulGateway</module>
     
   </modules>
 </project>

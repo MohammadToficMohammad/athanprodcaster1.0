@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>ClientTwo AthanProdcaster WebApp</title>
+<link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+  integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+  crossorigin="anonymous"
+/>
+</head>
+<style>
+  html, body, #react
+{
+    height: 100vh;
+}
+  </style>
+<body>
+
+<h1> Client Two</h1>
+
+<audio controls id="webcam" width="480" height="360"></audio>
+
+<script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+<script>
+var peer = new Peer("athanprodcaster_clienttwo");
+peer.on('connection', function(conn) {
+	  conn.on('data', function(data){
+	    // Will print 'hi!'
+	    console.log(data);
+	  });
+	});
+	
+var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+peer.on('call', function(call) {
+  getUserMedia({video: false, audio: true}, function(stream) {
+    call.answer(null); // Answer the call with an A/V stream.
+    call.on('stream', function(remoteStream) {
+    	const video = document.getElementById('webcam');
+        video.autoplay = true;
+        video.srcObject = remoteStream;
+    });
+  }, function(err) {
+    console.log('Failed to get local stream' ,err);
+  });
+});
+</script>
+</body>
+  
+</html>
